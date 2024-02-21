@@ -1,10 +1,10 @@
 ﻿using WarehouseApp.Domain;
-using WarrehouseApp.Infrastructure.DTOs;
+using WarrehouseApp.Infrastructure.Data.DTOs;
 
 namespace WarrehouseApp.Infrastructure.Data.Interfaces.SquarePrinter
 {
     public interface IApiSquarePrinter : ISquarePrinter
     {
-        List<SquareDto> PrintAndReturnSquareDtos(List<Square> squares);
+        WarehouseDto PrintAndReturnWarehouseDTO(string key,List<Square> squares);
     }
 }

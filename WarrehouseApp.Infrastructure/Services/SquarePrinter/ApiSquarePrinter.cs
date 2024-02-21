@@ -1,4 +1,5 @@
 ﻿using WarehouseApp.Domain;
+using WarrehouseApp.Infrastructure.Data.DTOs;
 using WarrehouseApp.Infrastructure.Data.Interfaces.SquarePrinter;
 using WarrehouseApp.Infrastructure.DTOs;
 
@@ -6,8 +7,8 @@ namespace WarrehouseApp.Infrastructure.Services.SquarePrinter
 {
     public class ApiSquarePrinter : IApiSquarePrinter
     {
-        public List<SquareDto> PrintAndReturnSquareDtos(List<Square> squares)
-        {
+        public WarehouseDto PrintAndReturnWarehouseDTO(string key, List<Square> squares)
+        {            
             List<SquareDto> squareDtos = [];
 
             foreach (var square in squares)
@@ -20,7 +21,7 @@ namespace WarrehouseApp.Infrastructure.Services.SquarePrinter
                 });
             }
 
-            return squareDtos;
+            return new WarehouseDto() { Squares = squareDtos, Key = key};
         }
     }
 }
