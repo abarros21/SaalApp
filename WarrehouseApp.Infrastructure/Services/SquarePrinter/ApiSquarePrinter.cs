@@ -1,6 +1,6 @@
 ﻿using WarehouseApp.Domain;
+using WarrehouseApp.Infrastructure.Data.Interfaces.SquarePrinter;
 using WarrehouseApp.Infrastructure.DTOs;
-using WarrehouseApp.Infrastructure.Interfaces;
 
 namespace WarrehouseApp.Infrastructure.Services.SquarePrinter
 {

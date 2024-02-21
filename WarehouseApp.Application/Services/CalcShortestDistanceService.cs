@@ -13,7 +13,7 @@ namespace WarehouseApp.Application.Services
         {
             Warehouse warehouse = CreateWarehouseFromModel(source);
             List<Square> squares = _squareService.CalcDistances(warehouse);
-
+            
             return squares;
         }
 

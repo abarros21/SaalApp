@@ -1,5 +1,5 @@
 ﻿using WarehouseApp.Domain;
-using WarrehouseApp.Infrastructure.Interfaces;
+using WarrehouseApp.Infrastructure.Data.Interfaces.SquarePrinter;
 
 namespace WarrehouseApp.Infrastructure.Services.SquarePrinter
 {

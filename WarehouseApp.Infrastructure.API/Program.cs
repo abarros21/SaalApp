@@ -2,11 +2,14 @@ using WarehouseApp.Application.Interfaces;
 using WarehouseApp.Application.Services;
 using WarehouseApp.Domain.Interfaces;
 using WarehouseApp.Domain.Services;
-using WarrehouseApp.Infrastructure.Interfaces;
+using WarrehouseApp.Infrastructure.Data.Interfaces.Redis;
+using WarrehouseApp.Infrastructure.Data.Interfaces.SquarePrinter;
+using WarrehouseApp.Infrastructure.Data.Repositories.Redis;
+using WarrehouseApp.Infrastructure.Data.Services.Data;
 using WarrehouseApp.Infrastructure.Services.SquarePrinter;
 
 var builder = WebApplication.CreateBuilder(args);
-
+string redisConnectionString = "localhost";
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -17,6 +20,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ISquareService, SquareService>();
 builder.Services.AddScoped<IApiSquarePrinter, ApiSquarePrinter>();
 builder.Services.AddScoped<ICalcShortestDistanceService, CalcShortestDistanceService>();
+builder.Services.AddScoped(typeof(IDataService<>), typeof(RedisDataService<>));
+builder.Services.AddSingleton<IRedisRepository>(new RedisRepository(redisConnectionString));
 
 
 var app = builder.Build();

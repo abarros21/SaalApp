@@ -1,6 +1,6 @@
 ﻿using WarehouseApp.Domain;
 
-namespace WarrehouseApp.Infrastructure.Interfaces
+namespace WarrehouseApp.Infrastructure.Data.Interfaces.SquarePrinter
 {
     public interface IConsoleSquarePrinter : ISquarePrinter
     {

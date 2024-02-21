@@ -3,7 +3,8 @@ using Newtonsoft.Json;
 using WarehouseApp.Application.DTOs;
 using WarehouseApp.Application.Interfaces;
 using WarehouseApp.Domain;
-using WarrehouseApp.Infrastructure.Interfaces;
+using WarrehouseApp.Infrastructure.Data.Interfaces.SquarePrinter;
+
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,22 +12,28 @@ namespace WarehouseApp.Infrastructure.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SquareController(IApiSquarePrinter apiSquarePrinter, ICalcShortestDistanceService calcShortestDistanceService) : ControllerBase
+    public class SquareController(IApiSquarePrinter apiSquarePrinter, 
+        ICalcShortestDistanceService calcShortestDistanceService,
+        IDataService<List<Square>> dataService) : ControllerBase
     {
         private readonly IApiSquarePrinter _apiSquarePrinter = apiSquarePrinter;
         private readonly ICalcShortestDistanceService _calcShortestDistanceService = calcShortestDistanceService;
+        private readonly IDataService<List<Square>> _dataService = dataService;
 
         [HttpPost("fromBody")]
-        public IActionResult GetSquares([FromBody] WarehouseInputDto input)
+        public async Task<IActionResult> PostFromBody([FromBody] WarehouseInputDto input)
         {          
             List<Square> squares = _calcShortestDistanceService.Execute(input);
-            var squareDtos = _apiSquarePrinter.PrintAndReturnSquareDtos(squares);
 
+            await _dataService.SaveAsync(Guid.NewGuid().ToString(), squares);
+
+            var squareDtos = _apiSquarePrinter.PrintAndReturnSquareDtos(squares);
+           
             return Ok(squareDtos);
         }
 
         [HttpPost("fromFile")]
-        public async Task<IActionResult> GetSquaresFromFile()
+        public async Task<IActionResult> PostFromFile()
         {
             var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "data.json");
 
@@ -48,6 +55,6 @@ namespace WarehouseApp.Infrastructure.API.Controllers
             {
                 return BadRequest($"Deserialization error JSON: {ex.Message}");
             }
-        }       
+        }
     }
 }

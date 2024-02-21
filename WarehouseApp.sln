@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarehouseApp.Domain", "Ware
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarehouseApp.Application", "WarehouseApp.Application\WarehouseApp.Application.csproj", "{1EEF6BEC-8643-4BC2-8C50-171622D082F9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarrehouseApp.Infrastructure", "WarrehouseApp.Infrastructure\WarrehouseApp.Infrastructure.csproj", "{9F54125A-812E-4B67-8B84-443C253C7DB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarrehouseApp.Infrastructure.Data", "WarrehouseApp.Infrastructure\WarrehouseApp.Infrastructure.Data.csproj", "{9F54125A-812E-4B67-8B84-443C253C7DB1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarehouseApp.Infrastructure.API", "WarehouseApp.Infrastructure.API\WarehouseApp.Infrastructure.API.csproj", "{8BAA6998-CE1E-4AD6-BBAC-3F546A716286}"
 EndProject

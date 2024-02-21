@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WarrehouseApp.Infrastructure\WarrehouseApp.Infrastructure.csproj" />
+    <ProjectReference Include="..\WarrehouseApp.Infrastructure\WarrehouseApp.Infrastructure.Data.csproj" />
   </ItemGroup>
 
 </Project>
